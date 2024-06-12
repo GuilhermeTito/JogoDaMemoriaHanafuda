@@ -1,24 +1,22 @@
-import './classes/Carta.js'
-import './functions/functions.js'
-import './classes/Jogador.js'
+import embaralharArray from '../functions/utilitarios.js'
+import CartaLogica from './carta-logica.js'
+import Jogador from './Jogador.js'
 
 class Jogo {
     constructor(){
         this.primeiraCarta = null
-        this.primeiraCarta = null
         this.segundaCarta = null
-        this.trava = false
+        this.estaTravado = false
         this.cartas = []
         this.jogadorUm = new Jogador(1, 0)
         this.jogadorDois = new Jogador(2, 0)
-        this.jogadorAtual = null
+        this.jogadorAtual = this.jogadorUm
     }
 
     iniciarJogo(){
         this.primeiraCarta = null
-        this.primeiraCarta = null
         this.segundaCarta = null
-        this.trava = false
+        this.estaTravado = false
         this.criarCartas()
         
         if(Math.floor(Math.random() * 10) % 2 == 0){
@@ -63,27 +61,32 @@ class Jogo {
     criarCartas(){
         this.cartas = []
 
-        idAtual = 1
+        let idAtual = 1
 
-        naipes = naipesEmbaralhados()
+        let naipesHikari = embaralharArray(['janeiro', 'marco', 'agosto', 'novembro', 'dezembro'])
+        let naipesTane = embaralharArray(['fevereiro', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro'])
+        let naipesTanzaku = embaralharArray(['janeiro', 'fevereiro', 'marco', 'abril', 'maio', 'junho', 'julho', 'setembro', 'outubro', 'novembro'])
+        let naipesKasu = embaralharArray(['janeiro', 'fevereiro', 'marco', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'])
 
-        for(i = 0; i < 1; i++){
-            this.cartas.push(new Hikari(idAtual, naipes[i]))
+        let i = 0
+
+        for(i = 0; i < 2; i++){
+            this.cartas.push(new CartaLogica(idAtual, naipesHikari[i], 'hikari', 20))
             idAtual++
         }
 
         for(i = 0; i < 4; i++){
-            this.cartas.push(new Tane(idAtual, naipes[i]))
+            this.cartas.push(new CartaLogica(idAtual, naipesTane[i], 'tane', 20))
             idAtual++
         }
 
         for(i = 0; i < 8; i++){
-            this.cartas.push(new Tanzaku(idAtual, naipes[i]))
+            this.cartas.push(new CartaLogica(idAtual, naipesTanzaku[i], 'tanzaku', 20))
             idAtual++
         }
 
         for(i = 0; i < 10; i++){
-            this.cartas.push(new Kasu(idAtual, naipes[i]))
+            this.cartas.push(new CartaLogica(idAtual, naipesKasu[i], 'kasu', 20))
             idAtual++
         }
     }
@@ -94,3 +97,5 @@ class Jogo {
 }
 
 let jogo = new Jogo()
+
+export default jogo

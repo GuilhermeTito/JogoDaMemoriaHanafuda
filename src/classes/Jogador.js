@@ -1,4 +1,4 @@
-class Jogador{
+export default class Jogador{
     constructor(id, pontuacao){
         this.id = id
         this.pontuacao = pontuacao

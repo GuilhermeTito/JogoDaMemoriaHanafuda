@@ -1,14 +1,11 @@
-import { useState } from 'react'
 import './App.css'
-import JogoDaMemoria from './components/JogoDaMemoria'
+import GradeDeCartas from './components/grade-de-cartas'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div>
-      <JogoDaMemoria/>
-    </div>
+    <>
+      <GradeDeCartas></GradeDeCartas>      
+    </>
   )
 }
 
