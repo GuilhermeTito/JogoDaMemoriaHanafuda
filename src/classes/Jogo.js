@@ -63,19 +63,26 @@ class Jogo {
 
     escolherCarta(carta) {
         if (carta.virada || this.estaTravado){
-            return false
+            return
         }
 
+        carta.virar()
+        
         if (this.primeiraCarta == null){
             this.primeiraCarta = carta
-            this.primeiraCarta.virada = true
-        }else{
-            this.segundaCarta = carta
-            this.segundaCarta.virada = true
-            this.estaTravado = true
-        }        
+            return
+        }
+        
+        this.segundaCarta = carta
+        this.estaTravado = true
+               
+        if (!this.compararCartas()){
+            setTimeout(() => this.desvirarCartas(), 1000);
+            return
+        }
 
-        return true
+        this.jogadorAtual.somarPontos(this.primeiraCarta.valor + this.segundaCarta.valor)
+        this.limparSelecao()
     }
 
     compararCartas(){
@@ -84,24 +91,21 @@ class Jogo {
         }        
 
         if(this.primeiraCarta.naipe != this.segundaCarta.naipe || this.primeiraCarta.tipo != this.segundaCarta.tipo){
-            this.desvirarCartas()
             return false
         }
 
-        this.jogadorAtual.somarPontos(this.primeiraCarta.valor + this.segundaCarta.valor)
-        
-        this.estaTravado = false
-        
         return true
     }
 
     desvirarCartas(){
-        this.primeiraCarta.virada = false
-        this.segundaCarta.virada = false
+        this.primeiraCarta.virar()
+        this.segundaCarta.virar()
+        this.limparSelecao()
+    }
 
+    limparSelecao(){
         this.primeiraCarta = null
         this.segundaCarta = null
-
         this.estaTravado = false
     }
 }

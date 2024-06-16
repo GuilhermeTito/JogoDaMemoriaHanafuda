@@ -4,14 +4,14 @@ import '../styles/carta.css'
 
 export default function CartaFisica(props){
     const [virada, setVirada] = useState(props.carta.virada)
-    
+    props.carta.virarCartaFisica = setVirada
+
     return (
         <div
             id={`carta${props.carta.id}`}    
             className={`carta ${virada ? "virada" : ""}`} 
             onClick={() => {
                 jogo.escolherCarta(props.carta)
-                setVirada(props.carta.virada)
                 jogo.compararCartas()
             }}
         >
