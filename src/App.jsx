@@ -1,10 +1,10 @@
 import './App.css'
 import GradeDeCartas from './components/grade-de-cartas'
 
-function App() {
+function App() {  
   return (
     <>
-      <GradeDeCartas></GradeDeCartas>      
+      <GradeDeCartas></GradeDeCartas>
     </>
   )
 }

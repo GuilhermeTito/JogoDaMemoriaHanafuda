@@ -27,38 +27,6 @@ class Jogo {
         }
     }
 
-    escolherCarta(id) {
-        let carta = this.cartas.find((carta) => carta.id === id)
-        
-        if (carta.virada || trava){
-            return false
-        }
-
-        if (this.primeiraCarta == null){
-            this.primeiraCarta = carta
-            this.primeiraCarta.virada = true
-        }else{
-            this.segundaCarta = carta
-            this.segundaCarta.virada = true
-        }
-
-        return true
-    }
-
-    compararCartas(){
-        if (primeiraCarta == null || segundaCarta == null){
-            return false
-        }
-
-        if(this.primeiraCarta.naipe != this.segundaCarta.naipe || this.primeiraCarta.tipo != this.segundaCarta.tipo){
-            return false
-        }
-
-        this.jogadorAtual.somarPontos(this.primeiraCarta.valor + this.segundaCarta.valor)
-
-        return true
-    }
-
     criarCartas(){
         this.cartas = []
         this.idProximaCarta = 0
@@ -82,6 +50,8 @@ class Jogo {
         for(i = 0; i < 5; i++){
             this.criarParDeCartas(naipesKasu[i], 'kasu', 1)
         }
+
+        this.cartas = embaralharArray(this.cartas)
     }
 
     criarParDeCartas(naipe, tipo, valor){
@@ -91,8 +61,48 @@ class Jogo {
         }        
     }
 
-    embaralharCartas(){
-        this.cartas = embaralharArray(this.cartas)
+    escolherCarta(carta) {
+        if (carta.virada || this.estaTravado){
+            return false
+        }
+
+        if (this.primeiraCarta == null){
+            this.primeiraCarta = carta
+            this.primeiraCarta.virada = true
+        }else{
+            this.segundaCarta = carta
+            this.segundaCarta.virada = true
+            this.estaTravado = true
+        }        
+
+        return true
+    }
+
+    compararCartas(){
+        if (this.primeiraCarta == null || this.segundaCarta == null){
+            return false
+        }        
+
+        if(this.primeiraCarta.naipe != this.segundaCarta.naipe || this.primeiraCarta.tipo != this.segundaCarta.tipo){
+            this.desvirarCartas()
+            return false
+        }
+
+        this.jogadorAtual.somarPontos(this.primeiraCarta.valor + this.segundaCarta.valor)
+        
+        this.estaTravado = false
+        
+        return true
+    }
+
+    desvirarCartas(){
+        this.primeiraCarta.virada = false
+        this.segundaCarta.virada = false
+
+        this.primeiraCarta = null
+        this.segundaCarta = null
+
+        this.estaTravado = false
     }
 }
 

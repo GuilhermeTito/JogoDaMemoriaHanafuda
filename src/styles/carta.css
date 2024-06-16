@@ -1,3 +1,30 @@
 .carta{
-    height: 20vh;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.2s;
 }
+
+.virada{
+    transform: rotateY(180deg);
+}
+
+.frente,
+.verso{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+}
+
+.frente{
+    transform: rotateY(180deg);
+}
+
+.imagem-carta{
+    height: 20vh;
+    box-shadow: 5px 5px 5px;
+}
+
