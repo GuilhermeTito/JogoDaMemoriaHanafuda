@@ -15,10 +15,10 @@ class Jogo {
     }
 
     iniciarJogo(){
-        this.primeiraCarta = null
-        this.segundaCarta = null
-        this.estaTravado = false
+        this.limparSelecao()
         this.criarCartas()
+        this.jogadorUm.zerarPontuacao()
+        this.jogadorDois.zerarPontuacao()
         
         if(Math.floor(Math.random() * 10) % 2 == 0){
             this.jogadorAtual = this.jogadorUm
@@ -30,13 +30,14 @@ class Jogo {
     criarCartas(){
         this.cartas = []
         this.idProximaCarta = 0
-        let i
-
+        
         let naipesHikari = embaralharArray(['janeiro', 'marco', 'agosto', 'novembro', 'dezembro'])
         let naipesTane = embaralharArray(['fevereiro', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro'])
         let naipesTanzaku = embaralharArray(['janeiro', 'fevereiro', 'marco', 'abril', 'maio', 'junho', 'julho', 'setembro', 'outubro', 'novembro'])
         let naipesKasu = embaralharArray(['janeiro', 'fevereiro', 'marco', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'])
 
+        let i = 0
+        
         this.criarParDeCartas(naipesHikari[0], 'hikari', 20)
 
         for(i = 0; i < 2; i++){
@@ -76,7 +77,7 @@ class Jogo {
         this.segundaCarta = carta
         this.estaTravado = true
                
-        if (!this.compararCartas()){
+        if (this.compararCartas() == false){
             setTimeout(() => this.desvirarCartas(), 1000);
             return
         }
