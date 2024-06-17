@@ -1,5 +1,5 @@
 import '../styles/tela-jogo.css'
-import jogo from '../classes/jogo.js'
+import jogo from '../classes/Jogo.js'
 import GradeDeCartas from '../components/grade-de-cartas'
 import CartaFisica from '../components/carta-fisica.jsx'
 import MenuLateralJogo from '../components/menu-lateral-jogo.jsx'

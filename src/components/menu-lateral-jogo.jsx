@@ -1,5 +1,5 @@
 import '../styles/menu-lateral-jogo.css'
-import jogo from '../classes/jogo'
+import jogo from '../classes/Jogo'
 import { useState } from 'react'
 
 export default function MenuLateralJogo(props){
@@ -19,7 +19,7 @@ export default function MenuLateralJogo(props){
             <h2>Vez de:</h2>
             <p>Jogador {idJogadorAtual}</p>
             <h2>Opções</h2>
-            <button type='button'>Reiniciar Jogo</button>
+            <a href="/">Voltar</a>
         </div>
 
     )

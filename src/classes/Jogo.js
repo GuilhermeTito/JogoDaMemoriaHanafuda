@@ -1,6 +1,6 @@
 import embaralharArray from '../functions/utilitarios.js'
 import CartaLogica from './carta-logica.js'
-import Jogador from './jogador.js'
+import Jogador from './Jogador.js'
 
 class Jogo {
     constructor(){

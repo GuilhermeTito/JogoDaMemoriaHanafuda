@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import jogo from '../classes/jogo'
+import jogo from '../classes/Jogo.js'
 import '../styles/carta.css'
 
 export default function CartaFisica(props){
