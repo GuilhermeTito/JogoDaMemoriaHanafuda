@@ -2,6 +2,23 @@
 
 Este é um jogo da memória feito em React que utiliza o baralho japonês Hanafuda.
 
+## Como executar
+
+Após clonar o repositório, execute no terminal o seguinte comando para instalar
+as dependências:
+
+```
+npm i
+```
+
+Em seguida, execute o próximo comando para iniciar o servidor local:
+
+```
+npm run dev
+```
+
+O link para o programa deverá aparecer no terminal. Por padrão, deve ser: http://localhost:5173/
+
 ## Regras
 
 Há 12 pares de cartas no total. A pontuação não é baseada no naipe das cartas,
