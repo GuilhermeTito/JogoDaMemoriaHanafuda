@@ -4,12 +4,13 @@ Este é um jogo da memória feito em React que utiliza o baralho japonês Hanafu
 
 ## Regras
 
-A pontuação por par não é baseada no naipe das cartas, mas no tipo:
+Há 12 pares de cartas no total. A pontuação não é baseada no naipe das cartas,
+mas no tipo:
 
-- Hikari: 40 pontos;
-- Tane: 20 pontos;
-- Tanzaku: 10 pontos;
-- Kasu: 2 pontos.
+- Hikari: 1 par, 40 pontos por par;
+- Tane: 2 pares, 20 pontos por par;
+- Tanzaku: 4 pares, 10 pontos por par;
+- Kasu: 5 pares, 2 pontos por par.
 
 ## Autores
 
@@ -26,6 +27,9 @@ de Sistemas da Fatec Mogi Mirim – Arthur de Azevedo.
 
 O baralho usado é o [deck de Hanafuda disponível na Wikipédia](https://en.wikipedia.org/wiki/Hanafuda),
 criado por [Louie Mantia](https://lmnt.me/).
+
+Na maioria dos naipes há mais de uma carta do tipo kasu, mas escolhi apenas
+uma delas pois são muito parecidas e poderia haver confusão.
 
 * https://pt.wikipedia.org/wiki/Ficheiro:Hanafuda_January_Hikari.svg
 * https://pt.wikipedia.org/wiki/Ficheiro:Hanafuda_March_Hikari.svg
