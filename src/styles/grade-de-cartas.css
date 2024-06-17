@@ -1,8 +1,17 @@
-#grade-de-cartas{
+.container-grade{
+    width: 75%;
     height: 100%;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../public/assets/fundo-madeira.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.grade-de-cartas{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: max-content;
-    gap: 25vh 15vh;    
+    grid-auto-rows: min-content;
+    gap: 25vh 15vh;
 }

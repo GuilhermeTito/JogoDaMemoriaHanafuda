@@ -11,7 +11,9 @@ class Jogo {
         this.idProximaCarta = 0
         this.jogadorUm = new Jogador(1, 0)
         this.jogadorDois = new Jogador(2, 0)
+        this.idJogadorAtual = 1
         this.jogadorAtual = this.jogadorUm
+        this.atualizarJogadorAtualNaTela = undefined
     }
 
     iniciarJogo(){
@@ -21,9 +23,9 @@ class Jogo {
         this.jogadorDois.zerarPontuacao()
         
         if(Math.floor(Math.random() * 10) % 2 == 0){
-            this.jogadorAtual = this.jogadorUm
+            this.idJogadorAtual = 1
         }else{
-            this.jogadorAtual = this.jogadorDois
+            this.idJogadorAtual = 2
         }
     }
 
@@ -78,11 +80,11 @@ class Jogo {
         this.estaTravado = true
                
         if (this.compararCartas() == false){
+            this.trocarJogador()
             setTimeout(() => this.desvirarCartas(), 1000);
             return
         }
-
-        this.jogadorAtual.somarPontos(this.primeiraCarta.valor + this.segundaCarta.valor)
+        this.pontuarJogador()
         this.limparSelecao()
     }
 
@@ -96,6 +98,24 @@ class Jogo {
         }
 
         return true
+    }
+
+    trocarJogador(){
+        if(this.idJogadorAtual > 1){
+            this.idJogadorAtual = 1
+            this.jogadorAtual = this.jogadorUm
+        } else {
+            this.idJogadorAtual = 2
+            this.jogadorAtual = this.jogadorDois
+        }
+
+        if (this.atualizarJogadorAtualNaTela != undefined){
+            this.atualizarJogadorAtualNaTela(this.idJogadorAtual)
+        }
+    }
+
+    pontuarJogador(){
+        this.jogadorAtual.somarPontos(this.primeiraCarta.valor + this.segundaCarta.valor)
     }
 
     desvirarCartas(){

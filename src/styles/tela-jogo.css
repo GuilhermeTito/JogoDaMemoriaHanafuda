@@ -1,0 +1,6 @@
+#tela-jogo{
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
